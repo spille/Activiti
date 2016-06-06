@@ -15,10 +15,18 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
+import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
+
+import springfox.documentation.builders.PathSelectors;
+import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -80,5 +88,26 @@ public class DispatcherServletConfiguration extends WebMvcConfigurationSupport {
   protected void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
     configurer.favorPathExtension(false);
   }
+  
+//  @Override
+//  public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+//      configurer.enable();
+//  }
+//  
+//  @Override
+//  protected void addResourceHandlers(ResourceHandlerRegistry registry) {
+//    registry.addResourceHandler("swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");
+//    registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
+//  }
+//  
+//  @Bean
+//  public Docket customImplementation() {
+//    return new Docket(DocumentationType.SWAGGER_2)  
+//      .select()                                  
+//      .apis(RequestHandlerSelectors.any())              
+//      .paths(PathSelectors.any())                          
+//      .build();  
+//  }
+
   
 }

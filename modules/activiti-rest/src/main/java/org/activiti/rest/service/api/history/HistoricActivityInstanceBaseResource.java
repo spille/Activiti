@@ -53,7 +53,7 @@ public class HistoricActivityInstanceBaseResource {
   @Autowired
   protected HistoryService historyService;
   
-  protected DataResponse getQueryResponse(HistoricActivityInstanceQueryRequest queryRequest, Map<String,String> allRequestParams) {
+  protected DataResponse getQueryResponse(HistoricActivityInstanceQueryRequest queryRequest) {
     HistoricActivityInstanceQuery query = historyService.createHistoricActivityInstanceQuery();
 
     // Populate query based on request
@@ -111,6 +111,6 @@ public class HistoricActivityInstanceBaseResource {
     }
 
     return new HistoricActivityInstancePaginateList(restResponseFactory).paginateList(
-        allRequestParams, queryRequest, query, "startTime", allowedSortProperties);
+        null, queryRequest, query, "startTime", allowedSortProperties);
   }
 }

@@ -45,19 +45,19 @@ public abstract class AbstractPaginateList {
   	}
   	
   	// In case pagination request is incomplete, fill with values found in URL if possible
-  	if (paginateRequest.getStart() == null) {
+  	if (paginateRequest.getStart() == null && requestParams != null) {
   		paginateRequest.setStart(RequestUtil.getInteger(requestParams, "start", 0));
   	}
   	
-  	if (paginateRequest.getSize() == null) {
+  	if (paginateRequest.getSize() == null && requestParams != null) {
   		paginateRequest.setSize(RequestUtil.getInteger(requestParams, "size", 10));
   	}
   	
-  	if (paginateRequest.getOrder() == null) {
+  	if (paginateRequest.getOrder() == null && requestParams != null) {
   		paginateRequest.setOrder(requestParams.get("order"));
   	}
   	
-  	if (paginateRequest.getSort() == null) {
+  	if (paginateRequest.getSort() == null && requestParams != null) {
   		paginateRequest.setSort(requestParams.get("sort"));
   	}
       

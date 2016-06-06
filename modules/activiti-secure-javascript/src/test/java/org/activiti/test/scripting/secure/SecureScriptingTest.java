@@ -16,7 +16,7 @@ public class SecureScriptingTest extends SecureScriptingBaseTest {
   @Test
   public void testClassWhiteListing() {
     deployProcessDefinition("test-secure-script-class-white-listing.bpmn20.xml");
-
+    
     try {
       runtimeService.startProcessInstanceByKey("secureScripting");
       Assert.fail(); // Expecting exception

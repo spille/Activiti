@@ -35,7 +35,6 @@ public class HistoricActivityInstanceQueryResource extends HistoricActivityInsta
   @RequestMapping(value="/query/historic-activity-instances", method = RequestMethod.POST, produces = "application/json")
   public DataResponse queryActivityInstances(@RequestBody HistoricActivityInstanceQueryRequest queryRequest, 
       @RequestParam Map<String,String> allRequestParams, HttpServletRequest request) {
-    
-    return getQueryResponse(queryRequest, allRequestParams);
+    return getQueryResponse(queryRequest);
   }
 }

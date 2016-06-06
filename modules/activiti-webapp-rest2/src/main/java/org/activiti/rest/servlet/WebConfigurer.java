@@ -67,10 +67,22 @@ public class WebConfigurer implements ServletContextListener {
     dispatcherServletConfiguration.register(DispatcherServletConfiguration.class);
 
     log.debug("Registering Spring MVC Servlet");
-    ServletRegistration.Dynamic dispatcherServlet = servletContext.addServlet("dispatcher", new DispatcherServlet(dispatcherServletConfiguration));
+    ServletRegistration.Dynamic dispatcherServlet = servletContext.addServlet("dispatcher", 
+        new DispatcherServlet(dispatcherServletConfiguration));
     dispatcherServlet.addMapping("/service/*");
     dispatcherServlet.setLoadOnStartup(1);
     dispatcherServlet.setAsyncSupported(true);
+    
+    log.debug("Registering Swagger Rest API Documentation");
+    AnnotationConfigWebApplicationContext swaggerDispatcherServletConfiguration = new AnnotationConfigWebApplicationContext();
+    swaggerDispatcherServletConfiguration.setParent(rootContext);
+    swaggerDispatcherServletConfiguration.register(SwaggerDispatcherServletConfiguration.class);
+
+    ServletRegistration.Dynamic swaggerDispatcherServlet = servletContext.addServlet("swagger", 
+        new DispatcherServlet(swaggerDispatcherServletConfiguration));
+    swaggerDispatcherServlet.addMapping("/swagger/*");
+    swaggerDispatcherServlet.setLoadOnStartup(1);
+    swaggerDispatcherServlet.setAsyncSupported(true);
     
     return dispatcherServlet;
   }
